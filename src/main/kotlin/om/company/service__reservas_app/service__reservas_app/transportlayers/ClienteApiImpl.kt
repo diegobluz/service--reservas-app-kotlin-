@@ -28,8 +28,10 @@ class ClienteApiImpl(
 
     @GetMapping("/{cpf}")
     fun getClientByCpf(@PathVariable cpf: String): ResponseEntity<ClienteResponse> {
-        val client = clienteUseCase.findByCpf(cpf)
-        val response = mapper.clienteDTOTo(clienteUseCase.execute(client!!))
+        val clientDto = clienteUseCase.findByCpf(cpf)
+            ?: return ResponseEntity.notFound().build() // Retorna 404 caso não exista
+
+        val response = mapper.clienteDTOTo(clientDto)
         return ResponseEntity.ok(response)
     }
 
