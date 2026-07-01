@@ -16,17 +16,14 @@ class ClienteDataSourceImpl(
         /*
         * Consulta na base o cpf do cliente
         */
-        val entity = clienteRepositoryJPA.findByCpf(cpf) ?: throw NoSuchElementException("Cliente não encontrado")
-            ?: throw NoSuchElementException("Cliente não encontrado")
-        return toDTO(entity)
+        return clienteRepositoryJPA.obterCpf(cpf)
     }
 
     override fun findByCpf(cpf: String): ClienteDTO? {
         /*
          * Consulta na base o cliente pelo cpf
          */
-        val entity = clienteRepositoryJPA.findByCpf(cpf) ?: return null
-        return toDTO(entity)
+        return clienteRepositoryJPA.findByCpf(cpf)
     }
 
     override fun save(cliente: ClienteDTO): ClienteDTO {
@@ -47,7 +44,7 @@ class ClienteDataSourceImpl(
         return toDTO(savedCliente) //retorna o DTO convertido da entity salva
     }
 
-    private fun toDTO(entity: ClienteDTO): ClienteDTO {
+    private fun toDTO(entity: ClienteEntity): ClienteDTO {
         return ClienteDTO(
             id = entity.id,
             cpf = entity.cpf,

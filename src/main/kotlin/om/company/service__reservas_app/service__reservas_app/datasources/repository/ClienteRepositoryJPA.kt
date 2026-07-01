@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository
 interface ClienteRepositoryJPA : JpaRepository<ClienteEntity, Long> {
 
     fun obterCpf(cpf: String): ClienteDTO
-    fun findByCpf(cpf: String): ClienteDTO?
-    fun save(cliente: ClienteEntity): ClienteEntity
+    fun findByCpf(cpf: String): ClienteDTO
 
 }
