@@ -5,6 +5,8 @@ import om.company.service__reservas_app.service__reservas_app.transportlayers.ma
 import om.company.service__reservas_app.service__reservas_app.transportlayers.request.ClienteRequest
 import om.company.service__reservas_app.service__reservas_app.transportlayers.response.ClienteResponse
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,6 +23,13 @@ class ClienteApiImpl(
     fun createClient(@RequestBody request: ClienteRequest): ResponseEntity<ClienteResponse> {
         val client = mapper.requestClientTO(request)
         val response = mapper.clienteDTOTo(clienteUseCase.execute(client))
+        return ResponseEntity.ok(response)
+    }
+
+    @GetMapping("/{cpf}")
+    fun getClientByCpf(@PathVariable cpf: String): ResponseEntity<ClienteResponse> {
+        val client = clienteUseCase.findByCpf(cpf)
+        val response = mapper.clienteDTOTo(clienteUseCase.execute(client!!))
         return ResponseEntity.ok(response)
     }
 
