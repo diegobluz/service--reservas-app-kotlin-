@@ -1,0 +1,103 @@
+spring:
+  application:
+    name: service--reservas-app
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  main:
+    banner-mode: 'OFF'
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/reservas_db
+    username: root
+    password: di240304DI!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+        show-sql: true
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL5Dialect
+info:
+  app:
+    name: "@project.name@"
+    version: "@project.version@"
+    description: "@project.description@"
+    base-package: com.company
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 5000
+        loggerLevel: full
+  httpclient:
+    enabled: true
+    maxConnections: 100
+    maxConnectionsPerRoute: 20
+    connectionTimeout: 2000
+    readTimeout: 5000
+
+services:
+  cep:
+    url: ${CEP_SERVICE_URL:https://viacep.com.br/ws}
+    connectTimeout: 2000
+    readTimeout: 5000
+server:
+  port: 5000
+  servlet:
+    context-path: /services-reservas-app
+
+management:
+  server:
+    port: 9090
+  context-path: /actuator
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        maxRetryAttempts: 2
+        waitDuration: 5000
+    instances:
+      global:
+        baseConfig: default
+
+grupo:
+  http:
+    factory:
+      habilitado: ${HTTP_FACTORY_HABILITADO:true}
+      numeroDeRotas: ${HTTP_FACTORY_NUMERO_DE_ROTAS:10}
+      numeroMaximoDeConexoesPorRota: ${HTTP_FACTORY_CONEXOES_PORTAS:100}
+      socketTimeout: ${HTTP_FACTORY_SOCKET_TIMEOUT:5000}
+      connectRequestTimeout: ${HTTP_FACTORY_REQUEST_TIMEOUT:2000}
+      connectTimeout: ${HTTP_FACTORY_TIMEOUT:2000}
+
+config:
+  api:
+    info: services-reservas-app
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [service--reservas-app,%X{trace_id:--},%X{span_id:--},%X{trace_flags:--}] ${PID} --- [%15.15t] %-40.40logger{36} .%-15.-15M : %m%n"
+
