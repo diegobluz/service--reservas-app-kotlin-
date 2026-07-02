@@ -26,7 +26,7 @@ class ClienteDataSourceImpl(
         return clienteRepositoryJPA.findByCpf(cpf)
     }
 
-    override fun save(cliente: ClienteDTO): ClienteDTO {
+    override fun saveCliente(cliente: ClienteDTO, cpf: String): ClienteDTO {
         // converter o DTO para entity para usar no Hibernate
         val salvarCliente = ClienteEntity(
             id = cliente.id,

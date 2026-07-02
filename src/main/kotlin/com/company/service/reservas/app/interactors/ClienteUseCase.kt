@@ -11,6 +11,7 @@ import java.time.temporal.ChronoUnit
 @Service
 class ClienteUseCase(
     private val repository: ClienteRepository
+    //private val cepGateway: CepGateway
 ) {
 
     fun execute(cliente: ClienteDTO): ClienteDTO {
@@ -26,7 +27,13 @@ class ClienteUseCase(
         if (repository.findByCpf(cpfFormatado) != null) {
             throw IllegalArgumentException("CPF já cadastrado.")
         }
-        return repository.save(ClienteMapper.mapper(cliente, cpfFormatado))
+
+        /*
+        val endereco = cepGateway.obterEndereco(cep)
+
+         */
+
+        return repository.saveCliente(cliente, cpfFormatado)
     }
 
    private fun validateAge(dataNasc: LocalDate): Boolean {

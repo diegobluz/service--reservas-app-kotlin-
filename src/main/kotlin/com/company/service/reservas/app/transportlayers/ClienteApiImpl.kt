@@ -1,7 +1,7 @@
 package com.company.service.reservas.app.transportlayers
 
 import com.company.service.reservas.app.interactors.ClienteUseCase
-import com.company.service.reservas.app.transportlayers.mappers.ClienteMapper
+import com.company.service.reservas.app.datasources.mappers.ClienteMapper
 import com.company.service.reservas.app.transportlayers.request.ClienteRequest
 import com.company.service.reservas.app.transportlayers.response.ClienteResponse
 import org.springframework.http.ResponseEntity

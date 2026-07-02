@@ -12,5 +12,5 @@ interface ClienteRepository {
     fun findByCpf(cpf: String): ClienteDTO?
 
     // Método de salvamento (o JpaRepository já herda um 'save' por padrão, mas se precisar sobrescrever o tipo:)
-    fun save(cliente: ClienteDTO): ClienteDTO
+    fun saveCliente(cliente: ClienteDTO, cpf: String): ClienteDTO
 }
