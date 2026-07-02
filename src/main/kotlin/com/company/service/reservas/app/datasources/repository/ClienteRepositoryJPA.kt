@@ -10,18 +10,18 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ClienteRepositoryJPA : JpaRepository<ClienteEntity, Long> {
     @Query("""
-        SELECT new com.company.service.reservas.app.service.reservas.app.entities.dto.ClienteDTO(
+        SELECT new com.company.service.reservas.app.entities.dto.ClienteDTO(
             c.id, c.cpf, c.nomeCompleto, c.telefone, c.email, c.dataNascimento, c.sexo, c.dataCadastro, null, c.dataUltimaAtualizacao
         ) 
         FROM ClienteEntity c WHERE c.cpf = :cpf
     """)
     fun obterCpf(@Param("cpf")cpf: String): ClienteDTO
     @Query("""
-        SELECT new com.company.service.reservas.app.service.reservas.app.entities.dto.ClienteDTO(
+        SELECT new com.company.service.reservas.app.entities.dto.ClienteDTO(
             c.id, c.cpf, c.nomeCompleto, c.telefone, c.email, c.dataNascimento, c.sexo, c.dataCadastro, null, c.dataUltimaAtualizacao
         ) 
         FROM ClienteEntity c WHERE c.cpf = :cpf
     """)
-    fun findByCpf(@Param("cpf")cpf: String): ClienteDTO
+    fun findByCpf(@Param("cpf")cpf: String): ClienteDTO?
 
 }
