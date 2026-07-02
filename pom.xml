@@ -9,7 +9,7 @@
 		<version>3.5.16</version>
 		<relativePath/> </parent>
 
-	<groupId>om.company.service--reservas-app</groupId>
+	<groupId>com.company.service--reservas-app</groupId>
 	<artifactId>service--reservas-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
@@ -188,8 +188,8 @@
 							<inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
 							<generatorName>kotlin-spring</generatorName>
 
-							<apiPackage>com.company.service-reservas-app.transportlayers.openapi.api</apiPackage>
-							<modelPackage>com.company.service-reservas-app.transportlayers.openapi.model</modelPackage>
+							<apiPackage>com.company.service_reservas_app.transportlayers.openapi.api</apiPackage>
+							<modelPackage>com.company.service_reservas_app.transportlayers.openapi.model</modelPackage>
 
 							<skipValidateSpec>true</skipValidateSpec>
 							<generateAliasAsModel>false</generateAliasAsModel>
