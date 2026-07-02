@@ -5,6 +5,7 @@ import com.company.service.reservas.app.transportlayers.mappers.ClienteMapper
 import com.company.service.reservas.app.transportlayers.request.ClienteRequest
 import com.company.service.reservas.app.transportlayers.request.ReservaRequest
 import com.company.service.reservas.app.transportlayers.response.ClienteResponse
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/v1/reserva")
 class ReservaApiImpl(
     private val useCase: ReservaUseCase,
+    @Qualifier("clienteTransportMapper")
     private val mapper: ClienteMapper
 ) {
 
