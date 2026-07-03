@@ -30,7 +30,7 @@ class ClienteDataSourceImpl(
         // converter o DTO para entity para usar no Hibernate
         val salvarCliente = ClienteEntity(
             id = cliente.id,
-            cpf = cliente.cpf,
+            cpf = cpf,
             nomeCompleto = cliente.nomeCompleto,
             telefone = cliente.telefone,
             email = cliente.email,

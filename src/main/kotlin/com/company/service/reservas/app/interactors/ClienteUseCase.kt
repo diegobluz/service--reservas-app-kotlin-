@@ -7,6 +7,8 @@ import com.company.service.reservas.app.utils.Validate
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import java.util.Objects
+import java.util.Optional
 
 @Service
 class ClienteUseCase(
@@ -24,14 +26,16 @@ class ClienteUseCase(
         val cpfFormatado = validateCPF(cliente.cpf)
 
         //valida se o CPF já existe no banco
-        if (repository.findByCpf(cpfFormatado) != null) {
-            throw IllegalArgumentException("CPF já cadastrado.")
-        }
-
+        repository.findByCpf(cpfFormatado)
+            ?.let { throw IllegalArgumentException("CPF: $cpfFormatado já cadastrado.") }
         /*
-        val endereco = cepGateway.obterEndereco(cep)
-
+        Task 1 - Criar um Gateway onde deve passar um cep e consultar o endereço
+                    Regra: Após consultar o endereço deve validar se existe aquele endereço,
+                           caso não exista deve lançar uma exceção.
+                           Se existir deve cadastrar o encedereço no banco de dados e retornar o endereço cadastrado.
+                           Fica a criteiro se irá salvar na tabela endereço ou direto na tabela de Cliente
          */
+        //  val endereco = cepGateway.obterEndereco(cep)
 
         return repository.saveCliente(cliente, cpfFormatado)
     }
