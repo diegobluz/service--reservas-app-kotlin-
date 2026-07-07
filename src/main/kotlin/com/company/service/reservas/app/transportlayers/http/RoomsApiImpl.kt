@@ -1,4 +1,4 @@
-package com.company.service.reservas.app.transportlayers
+package com.company.service.reservas.app.transportlayers.http
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

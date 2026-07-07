@@ -1,9 +1,9 @@
-package com.company.service.reservas.app.transportlayers
+package com.company.service.reservas.app.transportlayers.http
 
 import com.company.service.reservas.app.interactors.ClienteUseCase
 import com.company.service.reservas.app.datasources.mappers.ClienteMapper
-import com.company.service.reservas.app.transportlayers.request.ClienteRequest
-import com.company.service.reservas.app.transportlayers.response.ClienteResponse
+import com.company.service.reservas.app.transportlayers.http.request.ClienteRequest
+import com.company.service.reservas.app.transportlayers.http.response.ClienteResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

@@ -1,4 +1,4 @@
-package com.company.service.reservas.app.transportlayers.response
+package com.company.service.reservas.app.transportlayers.http.response
 
 import com.company.service.reservas.app.entities.dto.ClienteDTO
 

@@ -1,8 +1,8 @@
 package com.company.service.reservas.app.datasources.mappers
 
 import com.company.service.reservas.app.entities.dto.ClienteDTO
-import com.company.service.reservas.app.transportlayers.request.ClienteRequest
-import com.company.service.reservas.app.transportlayers.response.ClienteResponse
+import com.company.service.reservas.app.transportlayers.http.request.ClienteRequest
+import com.company.service.reservas.app.transportlayers.http.response.ClienteResponse
 import org.springframework.stereotype.Component
 
 @Component("clienteTransportMapper")

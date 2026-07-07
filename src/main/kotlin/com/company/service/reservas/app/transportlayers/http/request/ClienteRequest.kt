@@ -1,4 +1,4 @@
-package com.company.service.reservas.app.transportlayers.request
+package com.company.service.reservas.app.transportlayers.http.request
 
 import com.company.service.reservas.app.entities.dto.EnderecoDTO
 import java.time.LocalDate
