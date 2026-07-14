@@ -1,6 +1,6 @@
 package com.company.service.reservas.app.entities.enums
 
-enum class StatusReserve(status: String) {
+enum class StatusReserve(val status: String) {
 
     CHECKED_IN("Check-in"),
     CHECKED_OUT("Check-out"),

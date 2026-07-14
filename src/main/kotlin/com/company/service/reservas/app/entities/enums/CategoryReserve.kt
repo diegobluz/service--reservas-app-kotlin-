@@ -1,6 +1,6 @@
 package com.company.service.reservas.app.entities.enums
 
-enum class CategoryReserve(category: String) {
+enum class CategoryReserve(val category: String) {
 
     DELUXE("Deluxe"),
     STANDARD("Standard"),

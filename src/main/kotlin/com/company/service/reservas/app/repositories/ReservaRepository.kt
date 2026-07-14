@@ -11,8 +11,15 @@ import java.time.LocalDate
 @Repository
 interface ReservaRepository {
 
-    //TODO criar ReservaDTO
-    fun create(request: ReservaRequest): ResponseEntity<Any>
+
+    fun create(request: ReservaRequest): ReserveDTO{
+        //TODO criar persistencia
+        return ReserveDTO(
+            checkInDate = request.dataEntrada,
+            checkOutDate = request.dataEntrada,
+            status = StatusReserve.PENDING
+        )
+    }
 
     //TODO criar ReservaDTO
     fun getReserva(request: ReservaRequest): ReserveDTO
@@ -20,7 +27,13 @@ interface ReservaRepository {
     //TODO criar ReservaDTO
     fun getAllReservas(): List<ReserveDTO>
 
-    //TODO criar retorno como List<ReservaDTO>
-    fun getReservePeriod(startDate: LocalDate, endDate: LocalDate): List<ReserveDTO>
+
+    fun getReservePeriod(
+        startDate: LocalDate,
+        endDate: LocalDate
+    ): List<ReserveDTO>{
+        TODO()
+
+    }
 
 }

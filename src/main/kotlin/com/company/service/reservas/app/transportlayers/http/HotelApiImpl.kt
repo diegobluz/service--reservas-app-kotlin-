@@ -1,7 +1,8 @@
 package com.company.service.reservas.app.transportlayers.http
 
-import com.company.service.reservas.app.transportlayers.http.request.ClienteRequest
-import com.company.service.reservas.app.transportlayers.http.response.ClienteResponse
+import com.company.service.reservas.app.entities.dto.HotelDTO
+import com.company.service.reservas.app.interactors.HotelUseCase
+import com.company.service.reservas.app.transportlayers.http.request.HotelRequest
 import com.company.service.reservas.app.transportlayers.http.response.HotelResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,25 +13,26 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/reserve-app")
-class HotelApiImpl {
+class HotelApiImpl (
+    private val hotelUseCase: HotelUseCase
+){
 
 
     @PostMapping("/room/create")
-    fun createHotel(@RequestBody request: ClienteRequest): ResponseEntity<HotelResponse> {
-        return ResponseEntity.ok(null)
+    fun createHotel(@RequestBody request: HotelRequest): ResponseEntity<HotelResponse> {
+        val dto = HotelDTO(
+            nome = request.nome,
+            endereco = request.endereco,
+            comodidades = request.comodidades
+        )
+        val hotel = hotelUseCase.salvar(dto)
+        return ResponseEntity.ok(HotelResponse(hotel))
     }
     //TODO:  retornar apenas um hotel
     @GetMapping("/room/{roomId}")
-    fun getHotel(): String {
-        return "Hotel 1";
+    fun getHotel(): ResponseEntity<HotelResponse> {
+        return ResponseEntity.ok(HotelResponse(hotelUseCase.obter()))
     }
-
-    //TODO:  retornar uma lista de hotel
-    @GetMapping("/list/all/rooms")
-    fun getAllHotel(): List<HotelResponse> {
-        return mutableListOf(HotelResponse())
-    }
-
 
 
 }
