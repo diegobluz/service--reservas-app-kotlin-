@@ -10,8 +10,7 @@ O objetivo do projeto é praticar o desenvolvimento de uma aplicação backend m
 
 A estrutura utiliza conceitos próximos de arquitetura hexagonal/clean architecture, separando transporte HTTP, casos de uso, entidades, gateways, repositórios e mapeadores.
 
-## Funcionalidades identificadas
-
+## Funcionalidades
 - Cadastro de clientes
 - Consulta de cliente por CPF
 - Criação de reservas
